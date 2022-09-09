@@ -1,95 +1,10 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "title": "Tarefa 1",
-      "project": "Estudos"
-    },
-    {
-      "id": 2,
-      "title": "Tarefa 2",
-      "project": "Estudos"
-    },
-    {
-<<<<<<< HEAD
-      "title": "title",
-      "data": "09/09/2022",
-      "id": 3
-    },
-    {
-      "title": "oiiii",
-      "data": "09/09/2022",
-      "id": 4
-    },
-    {
-      "title": "oiiii",
-      "data": "09/09/2022",
-      "id": 5
-    },
-    {
-      "title": "ewfefef",
-      "data": "09/09/2022",
-      "id": 6
-    },
-    {
-      "title": "oiiiiiiiiiiiiiiiiiiiii",
-      "data": "09/09/2022",
-      "id": 7
-    },
-    {
-      "title": "feffewfewfewfeefef",
-      "data": "09/09/2022",
-      "id": 8
-    },
-    {
-      "title": "heyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
-      "data": "09/09/2022",
-      "id": 9
-    },
-    {
-      "title": "oioioi",
+      "title": "Estudar Vue Js",
       "project": "estudos",
-      "data": "09/09/2022",
-=======
-      "title": "",
       "date": "09/09/2022",
-      "id": 3
-    },
-    {
-      "title": "denwjqiofdhweihf",
-      "date": "09/09/2022",
-      "id": 4
-    },
-    {
-      "title": "gergreg",
-      "date": "09/09/2022",
-      "id": 5
-    },
-    {
-      "title": "dfhieowfhiewofhweifhewiofeiwoejwiof",
-      "date": "09/09/2022",
-      "id": 6
-    },
-    {
-      "title": "cjioewhjfdiewhjdfoiewhfio",
-      "date": "09/09/2022",
-      "id": 7
-    },
-    {
-      "title": "dwhiqudhwqiudhdwjiqodwhjieqhdioqewhdiowqhdio33333",
-      "date": "09/09/2022",
-      "id": 8
-    },
-    {
-      "title": "nova tarefga",
-      "date": "09/09/2022",
-      "id": 9
-    },
-    {
-      "title": "dududududdudud",
-      "date": "09/09/2022",
->>>>>>> 9f9b0e8a31772c6cc7abb0c168e89cf28b206fc0
-      "id": 10
+      "id": 1
     }
   ]
 }

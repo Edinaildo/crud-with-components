@@ -10,6 +10,10 @@
           {{ t.title }}
           <span class="task-badge right-align">{{ t.project }}</span>
         </h5>
+        <button class="btn btn-small" @click="editarClick(t.id)">Editar</button>
+        <button class="btn btn-small" @click="deletarClick(t.id)">
+          Deletar
+        </button>
       </li>
     </ul>
   </div>
@@ -17,12 +21,20 @@
 
 <script>
 export default {
-  name: 'TarefaList',
+  name: "TarefaList",
   props: {
     msg: String,
     tasks: Array,
   },
-}
+  methods: {
+    editarClick(tarefaId) {
+      this.$emit("editarClick", tarefaId);
+    },
+    deletarClick(tarefaId) {
+      this.$emit("deletarClick", tarefaId);
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

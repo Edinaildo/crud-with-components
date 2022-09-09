@@ -6,31 +6,29 @@
     </nav>
 
     <div v-show="exibir.lista" style="padding: 20px">
-      <button @click="mostrarCadastro">Adicionar</button>
+      <button class="btn" @click="mostrarCadastro">Adicionar</button>
     </div>
     <!-- LISTA -->
 
     <div v-show="exibir.lista">
-      <TarefaList msg="Welcome to Your Vue.js Home" :tasks="listaDeTarefas" />
+      <TarefaList
+        :msg="'Lista de Tarefas'"
+        :tasks="listaDeTarefas"
+        @editarClick="recebiEditar"
+        @deletarClick="recebiDeletar"
+      />
     </div>
-
     <!-- FORM -->
     <div v-show="exibir.form">
-      <h2>Cadastrar Tarefa</h2>
-      <input
-        type="text"
-        name="title"
-        id="title"
-        placeholder="Entre com a tarefa"
-        v-model="form.title"
-      />
-      <input
-        type="text"
-        name="project"
-        v-model="form.project"
-        placeholder="Entre com um projeto"
-      />
-      <button @click="salvarTarefa">Salvar</button>
+      <TarefaForm
+        :id="form.id"
+        :titulo="form.titulo"
+        :title="form.title"
+        :project="form.project"
+        :btn="form.btn"
+        @salvarClick="recebiSalvar"
+        @alterarClick="recebiAlterar"
+      ></TarefaForm>
     </div>
   </div>
 </template>
@@ -38,11 +36,13 @@
 <script>
 import TasksApi from "../TasksApi.js";
 import TarefaList from "../components/TarefaList.vue";
+import TarefaForm from "../components/TarefaForm.vue";
 
 export default {
   name: "HoMe",
   components: {
     TarefaList,
+    TarefaForm,
   },
   data: () => {
     return {
@@ -52,8 +52,11 @@ export default {
         form: false,
       },
       form: {
+        id: 0,
+        titulo: "Cadastrar Tarefa",
         title: "",
         project: "",
+        btn: "Adicionar",
       },
     };
   },
@@ -64,19 +67,39 @@ export default {
       });
     },
     mostrarCadastro() {
+      this.form.btn = "Adicionar";
       this.exibir.form = true;
       this.exibir.lista = false;
     },
-    salvarTarefa() {
-      this.exibir.form = false;
-      this.exibir.lista = true;
-      const novaTarefa = {
-        title: this.form.title,
-        project: this.form.project,
-        data: new Date().toLocaleDateString("pt"),
-      };
+    recebiSalvar(novaTarefa) {
       TasksApi.createTask(novaTarefa, () => {
         this.listarTarefas();
+        this.exibir.form = false;
+        this.exibir.lista = true;
+      });
+    },
+    recebiAlterar(tarefa) {
+      TasksApi.updateTasks(tarefa, () => {
+        this.listarTarefas();
+        this.exibir.form = false;
+        this.exibir.lista = true;
+      });
+    },
+    recebiDeletar(tarefa) {
+      TasksApi.deleteTasks(tarefa, () => {
+        this.listarTarefas();
+        this.exibir.form = false;
+        this.exibir.lista = true;
+      });
+    },
+    recebiEditar(tarefaId) {
+      this.form.btn = "Alterar";
+      TasksApi.getTask(tarefaId, (task) => {
+        this.form.id = task.id;
+        this.form.title = task.title;
+        this.form.project = task.project;
+        this.exibir.form = true;
+        this.exibir.lista = false;
       });
     },
   },
